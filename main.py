@@ -38,6 +38,10 @@ async def clear(ctx , amount = 1):
 async def randomiser(ctx , * ,max):
     await ctx.send(random.randrange(start=1 , stop = int(max)))
 
+@client.command(aliases = ["gh" , "creator"])
+async def github(ctx):
+    await ctx.send("github.com/testroyer")
+
 @client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency * 1000)}ms!")
