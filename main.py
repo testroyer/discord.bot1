@@ -1,11 +1,11 @@
 #from moderation import Moderation
 import os                           #==========================================================
 import random                       #
-import discord                      # Importig packs
-from discord.ext import commands    #
+import discord                      #
+from discord.ext import commands    #  Importig packs
 from discord import Intents         #
-from keep_alive import keep_alive 
-#==========================================================
+from keep_alive import keep_alive   #
+import datetime                     #==========================================================
 
 client = commands.Bot(command_prefix = "^_" , intents = Intents.all())
 
@@ -15,6 +15,7 @@ channel = client.get_channel(839157641179299963)
 @client.event
 async def on_ready():
     print("Bot is ready")
+    startPoint = datetime.datetime.now()
     await client.change_presence(status = discord.Status.idle , activity = discord.Game("mind tricks on you"))
     await client.get_channel(839157641179299963).send("Bot started/restarted")
         
@@ -25,6 +26,12 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     await client.get_channel(839157641179299963).send(f"{member} has left")
+
+@client.command()
+async def uptime(ctx):
+    current = datetime.datetime.now()
+    delta = startPoint - current
+    await ctx.send(f"It has been {delta.month} months, {delta.day} days, {delta.hour} hours, {delta.minute} minutes and {delta.second} seconds since last accident.")
 
 @client.command()
 async def delete(ctx , amount = 2):
