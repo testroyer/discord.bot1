@@ -32,7 +32,7 @@ async def on_member_remove(member):
 async def uptime(ctx):
     current = datetime.datetime.now()
     delta = startPoint - current
-    await ctx.send(f"It has been {delta.month} months, {delta.day} days, {delta.hour} hours, {delta.minute} minutes and {delta.second} seconds since last accident.")
+    await ctx.send(f"It has been {delta.day} days, {delta.hour} hours, {delta.minute} minutes and {delta.second} seconds since last accident.")
 
 @client.command()
 async def delete(ctx , amount = 2):
