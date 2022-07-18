@@ -15,6 +15,7 @@ channel = client.get_channel(839157641179299963)
 @client.event
 async def on_ready():
     print("Bot is ready")
+    global startPoint
     startPoint = datetime.datetime.now()
     await client.change_presence(status = discord.Status.idle , activity = discord.Game("mind tricks on you"))
     await client.get_channel(839157641179299963).send("Bot started/restarted")
