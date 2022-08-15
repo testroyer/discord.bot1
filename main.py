@@ -51,6 +51,20 @@ async def github(ctx):
     await ctx.send("github.com/testroyer")
 
 @client.command()
+async def timer(ctx, value , interval):
+    start = datetime.datetime.now()
+    if interval == "secs" or "seconds": 
+        while 1:
+            if datetime.datetime.now() >= start + datetime.timedelta(seconds= value):
+                break
+        ctx.send("Done")
+    elif interval == "mins" or "minutes": 
+        while 1:
+            if datetime.datetime.now() >= start + datetime.timedelta(seconds= value):
+                break
+        ctx.send("Done")
+
+@client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency * 1000)}ms!")
 
